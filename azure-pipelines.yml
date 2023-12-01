@@ -3,8 +3,8 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- main
+#trigger:
+#- main
 
 #pool:
 #  vmImage: ubuntu-latest
@@ -15,5 +15,14 @@ pool:
 steps:
 - script: echo Adding tests to Azure Pipelines is easy!
   displayName: 'Run an IBM Test'
+- task: RTASTask@1
+  inputs:
+    RTASService: 'IBM DevOps TestHub'
+    teamspace: 'Initial Team Space'
+    project: 'Emerald Storefront'
+    branch: 'DEV'
+    repo: 'https://github.com/ibmdevopstest/Emerald_APIs.git'
+    filePath: 'Emeral_API_GuestCheckout/Logical/EmeraldAPIs.scm/React Store.scm/Add To Cart and Checkout.gts'
+    ritEnv: 'Commerce React Store PUBLIC'
 
 
